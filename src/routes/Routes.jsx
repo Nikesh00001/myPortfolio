@@ -2,8 +2,7 @@ import React from "react";
 import { Children } from "react";
 import Layout from "../components/Layout";
 import Home from "../pages/Home";
-import Footer from "../components/Footer";
-import Message from "../components/message";
+import Message from "../components/Message";
 
 const Routes = [
     {
@@ -16,7 +15,7 @@ const Routes = [
             },
             {
                 path: "message",  
-                element: <Message />,
+                element: <Message/>,
             },
         ]
 
