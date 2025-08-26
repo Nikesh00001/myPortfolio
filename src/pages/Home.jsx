@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { FaInstagram, FaFacebook, FaLinkedin, FaGithub} from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
+import { useMessage } from '../Context/MessageContext';
 
 const Home = () => {
+  const{sideBar,setSideBar}=useMessage();
   const [description] = useState(
     "I'm a web developer passionate about creating smooth, responsive experiences with React. I also enjoy experimenting with FastAPI and MongoDB to expand my skills."
   );
@@ -15,7 +17,7 @@ const Home = () => {
                transition-all duration-500 ease-in-out opacity-100 translate-x-0 
                bg-white shadow-[2px_4px_6px_rgba(0,0,0,0.2),2px_-4px_6px_rgba(0,0,0,0.2)] 
                w-12 sm:w-16 md:w-20 h-64 md:h-80 lg:h-96 
-               text-2xl md:text-3xl lg:text-4xl gap-6 p-4 ">
+               text-2xl md:text-3xl lg:text-4xl gap-6 p-4 rounded ">
   <a href="https://www.instagram.com/nikesh_gautam1/"><li><FaInstagram /></li></a>
   <a href="https://www.facebook.com/Nikesh.Gautam.np/"><li><FaFacebook /></li></a>
   <a href="https://www.linkedin.com/in/nikesh-gautam-110018380/"><li><FaLinkedin /></li></a>

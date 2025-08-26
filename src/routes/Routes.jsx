@@ -2,7 +2,7 @@ import React from "react";
 import { Children } from "react";
 import Layout from "../components/Layout";
 import Home from "../pages/Home";
-import Message from "../components/Message";
+import Message from "../components/Message/Message";
 
 const Routes = [
     {

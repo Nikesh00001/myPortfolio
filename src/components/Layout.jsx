@@ -3,7 +3,7 @@ import NavBar from './NavBar'
 import { Outlet, useNavigate, } from 'react-router-dom'
 import Footer from './Footer'
 import { FaRegMessage } from "react-icons/fa6";
-import Message from './Message';
+import Message from './Message/Message';
 import { FaInstagram, FaFacebook, FaLinkedin, FaYahoo, FaGithub } from "react-icons/fa";
 import About from './About';
 import Projects from './Projects';
