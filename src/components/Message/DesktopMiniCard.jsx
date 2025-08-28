@@ -1,12 +1,15 @@
 import React from "react";
 import { IoMdSend } from "react-icons/io";
 
-const DesktopMiniCard = ({ chat }) => {
+const DesktopMiniCard = () => {
   return (
     <div
       className={`
-                  ${chat ? "hidden" : "z-10 fixed grid md:grid grid-cols-2 items-center  right-10 bottom-[16.4rem] bg-white shadow-2xl border border-gray-300 w-[23rem] rounded-2xl p-4"} 
-                  `}
+        z-10 fixed grid grid-cols-2 items-center 
+        right-10 bottom-[16.4rem] 
+        bg-white shadow-2xl border border-gray-300 
+        w-[23rem] rounded-2xl p-4
+      `}
     >
       <div>
         <h2 className="text-black font-semibold text-xl">Chat with Me</h2>

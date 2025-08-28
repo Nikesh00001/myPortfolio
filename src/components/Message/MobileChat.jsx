@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaChevronDown } from "react-icons/fa";
 import { IoMdSend } from "react-icons/io";
-import emailjs from "emailjs-com";// ✅ Import emailjs
+import emailjs from "emailjs-com";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const MobileChat = ({
   home,
@@ -13,9 +14,12 @@ const MobileChat = ({
   setShowMessage,
 }) => {
   const [message, setMessage] = useState("");
+  const [loading,setLoading] =useState(false);
+  const [success,setSuccess] =useState(false);
 
   const handleMessageSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     if (!message.trim()) return;
 
     emailjs
@@ -27,8 +31,13 @@ const MobileChat = ({
       )
       .then(
         () => {
-          alert("Message sent successfully!");
+          setLoading(false);
+          setSuccess(true);
           setMessage("");
+          setTimeout(() => {
+            setSuccess(false);
+            
+          }, 2000);
         },
         (err) => {
           alert("Failed to send message: " + err.text);
@@ -66,6 +75,12 @@ const MobileChat = ({
           Welcome to my website. How can I help you?
         </p>
       </div>
+      {
+        success &&
+         <p className="bg-green-100 text-green-700 font-medium ml-2 px-4 py-2 rounded-lg shadow">
+          Message successfully sent
+  </p>
+      }
 
       {/* Chat input */}
       <form
@@ -84,7 +99,8 @@ const MobileChat = ({
             type="submit"
             className="ml-3 text-3xl text-blue-600 hover:text-blue-800 transition"
           >
-            <IoMdSend />
+           { loading?<AiOutlineLoading3Quarters/> :<IoMdSend />
+}
           </button>
         )}
       </form>

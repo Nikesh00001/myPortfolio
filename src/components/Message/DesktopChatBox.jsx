@@ -4,6 +4,7 @@ import { FaChevronDown } from "react-icons/fa";
 import { IoMdHome, IoMdSend } from "react-icons/io";
 import { IoChatboxSharp } from "react-icons/io5";
 import emailjs from "emailjs-com";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const DesktopChatBox = ({
   home,
@@ -15,7 +16,10 @@ const DesktopChatBox = ({
   setShowMessage,
 }) => {
 const[message,setMessage]=useState('');
+const[loading,setLoading]=useState(false);
+const[successMessage,setSuccessMessage] = useState(false);
 const handleMessageSubmit=(e)=>{
+  setLoading(true);
 e.preventDefault();
 if(!message.trim()) return;
 emailjs.send(
@@ -25,8 +29,12 @@ emailjs.send(
     "XRQ5BjHJILfIGNIuT",
 ).then(
         () => {
-          alert("Message sent successfully!");
+          setLoading(false);
+          setSuccessMessage(true);
           setMessage("");
+          setTimeout(()=>{
+            setSuccessMessage(false)
+          },2000);
         },
         (err) => {
           alert("Failed to send message: " + err.text);
@@ -39,7 +47,7 @@ emailjs.send(
                     w-[28rem] ${chat?'h-[44rem]':'h-[33rem]'}  
                     rounded-lg bg-white shadow-lg overflow-hidden hidden sm:block`}>
       {/* Header */}
-      <div className={`${chat?'h-[10rem]':'h-[16rem]'} bg-[#843ef3]`}>
+      <div className={`${chat?'h-[12rem]':'h-[16rem]'} bg-[#843ef3]`}>
         <header className="pl-5 pt-6 flex flex-row items-center justify-between pr-4">
           <img
             src="/photoes/logo.jpeg"
@@ -66,7 +74,10 @@ emailjs.send(
             chat && <div className="mt-5 ml-6 text-xl font-semibold text-gray-300">
                 I reply immediately
             </div>
-          }
+}{
+          successMessage && <p className="text-green-400 ml-10 text-xl font-semibold ">message successfully send..</p>
+        }
+          
         <div className={`${chat?'hidden':''}`}>
         <h1 className="text-4xl pl-5 mt-4 text-white font-semibold">Hi there 👋</h1>
         <p className="pl-5 text-gray-200 text-base mt-2">
@@ -89,7 +100,7 @@ emailjs.send(
             onChange={(e)=>{setMessage(e.target.value)}}
             className="w-[16rem] border-none outline-none ml-4 text-xl"
             />
-            <button type="submit" className="mr-4 text-3xl text-blue-600"><IoMdSend/></button>
+            <button type="submit" className="mr-4 text-3xl text-blue-600">{loading?<AiOutlineLoading3Quarters/>:<IoMdSend/>}</button>
             </form>
             
            

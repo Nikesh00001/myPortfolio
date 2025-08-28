@@ -35,7 +35,9 @@ const Message = () => {
       {/* Desktop */}
       {showMessage && (
         <>
-          <DesktopMiniCard chat={chat}/>
+        {
+        !chat && <DesktopMiniCard />
+        }
           <DesktopChatBox
             home={home}
             chat={chat}
