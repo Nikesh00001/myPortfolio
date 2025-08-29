@@ -100,7 +100,7 @@ emailjs.send(
             onChange={(e)=>{setMessage(e.target.value)}}
             className="w-[16rem] border-none outline-none ml-4 text-xl"
             />
-            <button type="submit" className="mr-4 text-3xl text-blue-600">{loading?<AiOutlineLoading3Quarters/>:<IoMdSend/>}</button>
+            <button type="submit" className="mr-4 text-3xl text-blue-600">{loading?<AiOutlineLoading3Quarters className="animate-spin"/>:<IoMdSend/>}</button>
             </form>
             
            

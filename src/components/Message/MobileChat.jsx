@@ -99,7 +99,7 @@ const MobileChat = ({
             type="submit"
             className="ml-3 text-3xl text-blue-600 hover:text-blue-800 transition"
           >
-           { loading?<AiOutlineLoading3Quarters/> :<IoMdSend />
+           { loading?<AiOutlineLoading3Quarters className="animate-spin"/> :<IoMdSend />
 }
           </button>
         )}
